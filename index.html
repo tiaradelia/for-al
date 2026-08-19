@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Al Sayang</title>
+    <title>Happy Birthday Al Sayang 💕</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --bg-color: #120914;
             --card-bg: #1d1021;
             --accent-pink: #f472b6;
+            --accent-yellow: #facc15;
+            --accent-soft: #fef08a;
             --text-white: #f8fafc;
             --text-sub: #cbd5e1;
         }
@@ -28,153 +30,169 @@
             position: relative;
         }
 
-        /* Animasi Kelopak Bunga Berjatuhan */
-        .petal {
+        /* Animasi Bunga Matahari Gugur */
+        .sunflower-petal {
             position: fixed;
             top: -10%;
-            font-size: 20px;
+            font-size: 22px;
             user-select: none;
             pointer-events: none;
             z-index: 100;
             animation: fall 8s linear infinite;
         }
         @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(105vh) rotate(360deg);
-                opacity: 0.2;
-            }
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0.2; }
         }
 
         .container {
             width: 90%;
-            max-width: 400px;
-            padding: 20px;
+            max-width: 420px;
+            padding: 20px 10px;
             z-index: 10;
         }
-        .screen {
-            display: none;
-        }
-        .screen.active {
-            display: block;
-        }
+        .screen { display: none; }
+        .screen.active { display: block; }
+
         .card {
             background-color: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            border: 1px solid rgba(244, 114, 182, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border: 1px solid rgba(250, 204, 21, 0.4);
             position: relative;
+            margin-bottom: 20px;
         }
-        
-        /* Ornamen Bunga di Sudut Kartu */
-        .card::before {
-            content: "🌸";
-            position: absolute;
-            top: 8px;
-            left: 12px;
-            font-size: 16px;
-            opacity: 0.8;
-        }
-        .card::after {
-            content: "🌺";
-            position: absolute;
-            bottom: 8px;
-            right: 12px;
-            font-size: 16px;
-            opacity: 0.8;
-        }
+        /* Ornamen Bunga Matahari di Sudut Kartu */
+        .card::before { content: "🌻"; position: absolute; top: 12px; left: 14px; font-size: 18px; opacity: 0.9; }
+        .card::after { content: "🌻"; position: absolute; bottom: 12px; right: 14px; font-size: 18px; opacity: 0.9; }
 
+        /* PIN Screen */
         .pin-display {
-            font-size: 24px;
-            letter-spacing: 8px;
+            font-size: 26px;
+            letter-spacing: 10px;
             margin: 20px 0;
-            min-height: 36px;
-            color: var(--accent-pink);
+            min-height: 38px;
+            color: var(--accent-yellow);
+            font-weight: bold;
         }
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         .key {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
             padding: 15px;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             user-select: none;
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .key:active {
-            background: var(--accent-pink);
-            color: #000;
-        }
+        .key:active { background: var(--accent-yellow); color: #000; }
+
+        /* Gift Screen */
         .gift-box {
-            font-size: 80px;
+            font-size: 85px;
             cursor: pointer;
             animation: bounce 2s infinite;
+            margin: 30px 0;
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
             40% {transform: translateY(-20px);}
             60% {transform: translateY(-10px);}
         }
-        .photo-frame img {
-            width: 100%;
-            border-radius: 12px;
-            margin-top: 15px;
-            border: 2px solid rgba(244, 114, 182, 0.4);
-        }
+
+        /* Content Screen */
         .header-tag {
-            color: var(--accent-pink);
-            font-size: 14px;
+            color: var(--accent-yellow);
+            font-size: 13px;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
         .main-title {
             font-size: 22px;
-            margin: 10px 0;
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+            color: var(--text-white);
         }
         .letter-text {
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-sub);
             text-align: left;
             margin-top: 15px;
+            white-space: pre-line;
+        }
+        .photo-frame img {
+            width: 100%;
+            border-radius: 14px;
+            margin-top: 10px;
+            border: 2px solid rgba(250, 204, 21, 0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
         .caption {
             font-style: italic;
-            margin-top: 8px;
-            color: var(--accent-pink);
-        }
-        .hint {
-            font-size: 12px;
-            color: var(--text-sub);
-            margin-top: 15px;
+            margin-top: 12px;
+            color: var(--accent-yellow);
+            font-weight: 500;
         }
         .footer-text {
+            margin-top: 25px;
+            font-size: 15px;
+            color: var(--accent-yellow);
+            font-weight: bold;
+        }
+
+        /* Music Player Style */
+        .music-card {
+            background: rgba(29, 16, 33, 0.9);
+            border: 1px solid rgba(250, 204, 21, 0.4);
+            border-radius: 16px;
+            padding: 15px;
             margin-top: 20px;
+        }
+        .music-title {
             font-size: 13px;
-            color: var(--accent-pink);
-            font-weight: 500;
+            color: var(--accent-soft);
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .btn-music {
+            background: var(--accent-yellow);
+            color: #120914;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-<!-- Efek Bunga Gugur -->
-<div class="petal" style="left: 10%; animation-delay: 0s;">🌸</div>
-<div class="petal" style="left: 25%; animation-delay: 2s;">🌹</div>
-<div class="petal" style="left: 45%; animation-delay: 4s;">🌺</div>
-<div class="petal" style="left: 65%; animation-delay: 1s;">🌸</div>
-<div class="petal" style="left: 85%; animation-delay: 3s;">🌷</div>
+<!-- Efek Bunga Matahari Gugur -->
+<div class="sunflower-petal" style="left: 10%; animation-delay: 0s;">🌻</div>
+<div class="sunflower-petal" style="left: 30%; animation-delay: 2.5s;">🌻</div>
+<div class="sunflower-petal" style="left: 50%; animation-delay: 4.5s;">✨</div>
+<div class="sunflower-petal" style="left: 70%; animation-delay: 1s;">🌻</div>
+<div class="sunflower-petal" style="left: 90%; animation-delay: 3.5s;">🌻</div>
 
 <div class="container">
+
     <!-- 1. PIN SCREEN -->
     <div id="pinScreen" class="screen active">
         <div class="card">
@@ -195,33 +213,40 @@
                 <div class="key" onclick="pressKey('0')">0</div>
                 <div class="key" onclick="pressKey('OK')">OK</div>
             </div>
-            <div class="hint">Hint: 010524 💕</div>
+            <div style="font-size: 12px; color: var(--text-sub); margin-top: 15px;">Hint: 010524 🌻</div>
         </div>
     </div>
 
     <!-- 2. GIFT SCREEN -->
     <div id="giftScreen" class="screen">
-        <p style="margin-top: 50px;">Tap the gift box! 🌸</p>
+        <p style="font-size: 16px; color: var(--accent-soft);">Tap the gift box! 🌻</p>
         <div class="gift-box" onclick="openGift()">🎁</div>
     </div>
 
     <!-- 3. MAIN CONTENT SCREEN -->
     <div id="mainScreen" class="screen">
-        <div class="header-tag">✨ 🌸 Your Special Day 🌸 ✨</div>
-        <div class="main-title">HAPPY BIRTHDAY<br>Ahmad Yasin Al Faruq</div>
-        <p style="font-size: 12px; color: var(--text-sub);">16 Juni 2026</p>
+        <div class="header-tag">✨ 🌻 Special Day For You 🌻 ✨</div>
+        <div class="main-title">HAPPY BIRTHDAY<br>Ahmad Yasin Al Faruq 🎂</div>
+        <p style="font-size: 13px; color: var(--accent-yellow); margin-bottom: 20px;">~ Ke-22 Tahun ~</p>
 
-        <!-- Surat Ucapan -->
+        <!-- Surat Ucapan Lengkap -->
         <div class="card">
-            <div class="header-tag" style="margin-bottom: 10px;">💌 Surat Ucapan</div>
+            <div class="header-tag" style="margin-bottom: 10px;">💌 Surat Untuk Al Sayang</div>
             <div class="letter-text">
-                Yaumul milad Al sayang, nda terasa Al udah 22 tahun aja yaa.<br><br>
-                Di umur Al yang baru ini, Aca cuma mau doakan yang terbaik buat Al. Semoga di usia ini Al makin bahagia, makin dewasa, dan makin sukses.
+Yaumul milad al sayang, nda terasa al udah 22 tahun sekarang.
+
+Aca mau bilang makasih banyak karena al udah lahir ke dunia ini dan tumbuh jadi sosok laki-laki yang hebat, sabar, dan selalu bisa bikin aca merasa aman dan happy.
+
+Di umur al yang baru ini, aca cuma mau doakan yang terbaik buat al. Semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik. 
+
+Jangan pernah ragu sama kemampuan diri kamu sendiri nah sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.
+
+Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al yang selalu aca sayang. Enjoy ur special day my favorite person, i love you so much ♡
             </div>
         </div>
 
         <!-- Foto Memory -->
-        <div class="card" style="margin-top: 20px;">
+        <div class="card">
             <div class="header-tag" style="margin-bottom: 10px;">📸 PHOTO MEMORY</div>
             <div class="photo-frame">
                 <img src="IMG-20260616-WA0129.jpg" alt="Ahmad Yasin Al Faruq">
@@ -229,13 +254,46 @@
             <div class="caption">" al ganteng "</div>
         </div>
 
-        <div class="footer-text">With all my love, Aca 🌸💕</div>
+        <!-- Music Player -->
+        <div class="music-card">
+            <div class="header-tag">🎵 Special Playlist</div>
+            <div class="music-title" id="songTitle">Pamungkas - Berapa Kali Kita Saling Memaafkan</div>
+            <audio id="bgMusic" loop>
+                <source id="audioSource" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+            </audio>
+            <div class="music-controls">
+                <button class="btn-music" onclick="prevSong()">⏮ Prev</button>
+                <button class="btn-music" id="playBtn" onclick="togglePlay()">⏸ Pause</button>
+                <button class="btn-music" onclick="nextSong()">Next ⏭</button>
+            </div>
+        </div>
+
+        <div class="footer-text">dari aca cantik 🌻💕</div>
     </div>
+
 </div>
 
 <script>
     const correctPin = "010524";
     let inputPin = "";
+
+    // Playlist Lagu
+    const playlist = [
+        {
+            title: "Pamungkas - Berapa Kali Kita Saling Memaafkan",
+            src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3"
+        },
+        {
+            title: "Backstreet Boys - Shape Of My Heart",
+            src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3"
+        },
+        {
+            title: "Westlife - My Love",
+            src: "https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f7f458.mp3"
+        }
+    ];
+    let currentSongIndex = 0;
+    const audio = document.getElementById('bgMusic');
 
     function pressKey(key) {
         if (key === 'C') {
@@ -268,12 +326,41 @@
 
     function openGift() {
         confetti({
-            particleCount: 100,
-            spread: 70,
+            particleCount: 120,
+            spread: 80,
             origin: { y: 0.6 }
         });
         document.getElementById('giftScreen').classList.remove('active');
         document.getElementById('mainScreen').classList.add('active');
+        
+        playSong();
+    }
+
+    function playSong() {
+        audio.src = playlist[currentSongIndex].src;
+        document.getElementById('songTitle').innerText = playlist[currentSongIndex].title;
+        audio.play();
+        document.getElementById('playBtn').innerText = "⏸ Pause";
+    }
+
+    function togglePlay() {
+        if (audio.paused) {
+            audio.play();
+            document.getElementById('playBtn').innerText = "⏸ Pause";
+        } else {
+            audio.pause();
+            document.getElementById('playBtn').innerText = "▶ Play";
+        }
+    }
+
+    function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % playlist.length;
+        playSong();
+    }
+
+    function prevSong() {
+        currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+        playSong();
     }
 </script>
 
