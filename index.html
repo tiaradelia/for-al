@@ -9,7 +9,6 @@
         :root {
             --bg-color: #120914;
             --card-bg: #1d1021;
-            --accent-pink: #f472b6;
             --accent-yellow: #facc15;
             --accent-soft: #fef08a;
             --text-white: #f8fafc;
@@ -30,8 +29,8 @@
             position: relative;
         }
 
-        /* Animasi Bunga Matahari Gugur */
-        .sunflower-petal {
+        /* Animasi Bunga Matahari & Spark Berjatuhan */
+        .falling-item {
             position: fixed;
             top: -10%;
             font-size: 22px;
@@ -63,9 +62,10 @@
             position: relative;
             margin-bottom: 20px;
         }
-        /* Ornamen Bunga Matahari di Sudut Kartu */
-        .card::before { content: "🌻"; position: absolute; top: 12px; left: 14px; font-size: 18px; opacity: 0.9; }
-        .card::after { content: "🌻"; position: absolute; bottom: 12px; right: 14px; font-size: 18px; opacity: 0.9; }
+
+        /* Ornamen Bunga Matahari & Spark di Sudut Kartu */
+        .card::before { content: "🌻✨"; position: absolute; top: 12px; left: 14px; font-size: 16px; opacity: 0.9; }
+        .card::after { content: "✨🌻"; position: absolute; bottom: 12px; right: 14px; font-size: 16px; opacity: 0.9; }
 
         /* PIN Screen */
         .pin-display {
@@ -144,7 +144,7 @@
         }
         .footer-text {
             margin-top: 25px;
-            font-size: 15px;
+            font-size: 16px;
             color: var(--accent-yellow);
             font-weight: bold;
         }
@@ -184,12 +184,12 @@
 </head>
 <body>
 
-<!-- Efek Bunga Matahari Gugur -->
-<div class="sunflower-petal" style="left: 10%; animation-delay: 0s;">🌻</div>
-<div class="sunflower-petal" style="left: 30%; animation-delay: 2.5s;">🌻</div>
-<div class="sunflower-petal" style="left: 50%; animation-delay: 4.5s;">✨</div>
-<div class="sunflower-petal" style="left: 70%; animation-delay: 1s;">🌻</div>
-<div class="sunflower-petal" style="left: 90%; animation-delay: 3.5s;">🌻</div>
+<!-- Efek Bunga Matahari & Spark Gugur -->
+<div class="falling-item" style="left: 10%; animation-delay: 0s;">🌻</div>
+<div class="falling-item" style="left: 25%; animation-delay: 2s;">✨</div>
+<div class="falling-item" style="left: 45%; animation-delay: 4.5s;">🌻</div>
+<div class="falling-item" style="left: 65%; animation-delay: 1s;">✨</div>
+<div class="falling-item" style="left: 85%; animation-delay: 3s;">🌻</div>
 
 <div class="container">
 
@@ -213,35 +213,31 @@
                 <div class="key" onclick="pressKey('0')">0</div>
                 <div class="key" onclick="pressKey('OK')">OK</div>
             </div>
-            <div style="font-size: 12px; color: var(--text-sub); margin-top: 15px;">Hint: 010524 🌻</div>
+            <div style="font-size: 12px; color: var(--text-sub); margin-top: 15px;">Hint: 010524 🌻✨</div>
         </div>
     </div>
 
     <!-- 2. GIFT SCREEN -->
     <div id="giftScreen" class="screen">
-        <p style="font-size: 16px; color: var(--accent-soft);">Tap the gift box! 🌻</p>
+        <p style="font-size: 16px; color: var(--accent-soft);">Tap the gift box! 🌻✨</p>
         <div class="gift-box" onclick="openGift()">🎁</div>
     </div>
 
     <!-- 3. MAIN CONTENT SCREEN -->
     <div id="mainScreen" class="screen">
         <div class="header-tag">✨ 🌻 Special Day For You 🌻 ✨</div>
-        <div class="main-title">HAPPY BIRTHDAY<br>Ahmad Yasin Al Faruq 🎂</div>
+        <div class="main-title">HAPPY BIRTHDAY<br>ahmad yasin al faruq 🎂</div>
         <p style="font-size: 13px; color: var(--accent-yellow); margin-bottom: 20px;">~ Ke-22 Tahun ~</p>
 
-        <!-- Surat Ucapan Lengkap -->
+        <!-- Surat Ucapan -->
         <div class="card">
-            <div class="header-tag" style="margin-bottom: 10px;">💌 Surat Untuk Al Sayang</div>
+            <div class="header-tag" style="margin-bottom: 10px;">💌 Surat Ucapan</div>
             <div class="letter-text">
-Yaumul milad al sayang, nda terasa al udah 22 tahun sekarang.
+yaumul milad al sayang nda terasa al udah 22 tahun sekarang, aca mau bilang makasih banyak karena al udah lahir ke dunia ini dan tumbuh jadi sosok laki laki yang hebat, sabar, dan selalu bisa bikin aca merasa aman dan happy.
 
-Aca mau bilang makasih banyak karena al udah lahir ke dunia ini dan tumbuh jadi sosok laki-laki yang hebat, sabar, dan selalu bisa bikin aca merasa aman dan happy.
+diumur al yang baru ini, aca cuma mau doakan yang terbaik buat al, semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik, jangan pernah ragu sama kemampuan diri kamu sendiri nah sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.
 
-Di umur al yang baru ini, aca cuma mau doakan yang terbaik buat al. Semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik. 
-
-Jangan pernah ragu sama kemampuan diri kamu sendiri nah sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.
-
-Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al yang selalu aca sayang. Enjoy ur special day my favorite person, i love you so much ♡
+semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al yang selalu aca sayang, enjoy ur special day my favorite person i love you so much ♡
             </div>
         </div>
 
@@ -249,17 +245,17 @@ Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
         <div class="card">
             <div class="header-tag" style="margin-bottom: 10px;">📸 PHOTO MEMORY</div>
             <div class="photo-frame">
-                <img src="IMG-20260616-WA0129.jpg" alt="Ahmad Yasin Al Faruq">
+                <img src="IMG-20260616-WA0129.jpg" alt="ahmad yasin al faruq">
             </div>
-            <div class="caption">" al ganteng "</div>
+            <div class="caption">al ganteng</div>
         </div>
 
-        <!-- Music Player -->
+        <!-- Music Player (3 Lagu Pemungkas, Backstreet Boys, Westlife) -->
         <div class="music-card">
             <div class="header-tag">🎵 Special Playlist</div>
             <div class="music-title" id="songTitle">Pamungkas - Berapa Kali Kita Saling Memaafkan</div>
             <audio id="bgMusic" loop>
-                <source id="audioSource" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+                <source id="audioSource" src="https://raw.githubusercontent.com/tiaradelia/for-al/main/pamungkas.mp3" type="audio/mpeg">
             </audio>
             <div class="music-controls">
                 <button class="btn-music" onclick="prevSong()">⏮ Prev</button>
@@ -268,7 +264,7 @@ Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
             </div>
         </div>
 
-        <div class="footer-text">dari aca cantik 🌻💕</div>
+        <div class="footer-text">dari aca cantik 🌻✨💕</div>
     </div>
 
 </div>
@@ -277,7 +273,7 @@ Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
     const correctPin = "010524";
     let inputPin = "";
 
-    // Playlist Lagu
+    // Playlist 3 Lagu
     const playlist = [
         {
             title: "Pamungkas - Berapa Kali Kita Saling Memaafkan",
@@ -326,8 +322,8 @@ Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
 
     function openGift() {
         confetti({
-            particleCount: 120,
-            spread: 80,
+            particleCount: 130,
+            spread: 90,
             origin: { y: 0.6 }
         });
         document.getElementById('giftScreen').classList.remove('active');
@@ -339,7 +335,7 @@ Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
     function playSong() {
         audio.src = playlist[currentSongIndex].src;
         document.getElementById('songTitle').innerText = playlist[currentSongIndex].title;
-        audio.play();
+        audio.play().catch(e => console.log("Audio play blocked"));
         document.getElementById('playBtn').innerText = "⏸ Pause";
     }
 
@@ -366,3 +362,5 @@ Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
 
 </body>
 </html>
+    
+    
