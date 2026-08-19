@@ -242,6 +242,7 @@
       width: 100%;
       border-radius: 4px;
       display: block;
+      object-fit: cover;
     }
 
     .photo-caption {
@@ -249,30 +250,6 @@
       font-size: 12px;
       font-weight: 600;
       color: #444;
-    }
-
-    /* Music Player */
-    .player-box {
-      background: rgba(0,0,0,0.3);
-      padding: 15px;
-      border-radius: 12px;
-    }
-
-    .playlist-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 12px;
-      margin-top: 8px;
-    }
-
-    .playlist-item.active {
-      border: 1px solid var(--accent);
-      color: var(--accent);
     }
 
     /* Jar Shake */
@@ -404,44 +381,18 @@
       <!-- Photo Memories -->
       <div class="main-section">
         <p class="sub-title">A Collection of Memories</p>
-        <h2 style="font-size: 17px;">Foto Gantengnya Aca ✨</h2>
+        <h2 style="font-size: 17px;">Our Photo Memories ✨</h2>
         
         <!-- Foto Ganteng Al -->
         <div class="photo-card">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60" id="photo1" alt="Foto Ganteng Al">
+          <img src="1001025477.jpg" alt="Foto Ganteng Al">
           <p class="photo-caption">foto gantengnya aca ✨</p>
         </div>
 
-        <!-- Foto Berdua -->
+        <!-- Foto Berdua Al & Aca -->
         <div class="photo-card" style="margin-top: 20px;">
-          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60" id="photo2" alt="Al & Aca">
+          <img src="1001025476.jpg" alt="Al & Aca Cantik">
           <p class="photo-caption">Al & Aca Cantik 💕</p>
-        </div>
-      </div>
-
-      <!-- Music Player dengan Audio Beneran -->
-      <div class="main-section">
-        <p class="sub-title">Our Playlist</p>
-        <h2 style="font-size: 17px; margin-bottom: 12px;">Special Songs 🎵</h2>
-        
-        <div class="player-box">
-          <p style="font-size: 13px; font-weight: bold; color: var(--accent);" id="song-title">Berapa Kali Kita Akan Saling Memaafkan</p>
-          <p style="font-size: 11px; color: var(--text-sub); margin-bottom: 10px;" id="song-artist">Pamungkas</p>
-
-          <audio id="audio-element" controls style="width: 100%; height: 35px; margin-bottom: 10px;"></audio>
-          
-          <div class="playlist-item active" onclick="playTrack(0, this)">
-            <span>🎵 Berapa Kali Kita Akan Saling Memaafkan</span>
-            <span>Pamungkas</span>
-          </div>
-          <div class="playlist-item" onclick="playTrack(1, this)">
-            <span>🎵 My Love</span>
-            <span>Westlife</span>
-          </div>
-          <div class="playlist-item" onclick="playTrack(2, this)">
-            <span>🎵 Shape of My Heart</span>
-            <span>Backstreet Boys</span>
-          </div>
         </div>
       </div>
 
@@ -472,7 +423,7 @@
   </div>
 
   <script>
-    // Falling Sunflowers and Sparks Effect
+    // Floating Sunflowers and Sparks
     function createItem() {
       const container = document.getElementById('item-container');
       const item = document.createElement('div');
@@ -537,49 +488,15 @@
       }
     }
 
-    // Gift Unlock & Auto Play Audio
+    // Gift Unlock
     function openGift() {
       document.getElementById('screen-gift').classList.add('hidden');
       document.getElementById('screen-main').classList.remove('hidden');
-      playTrack(0, document.querySelectorAll('.playlist-item')[0]);
     }
 
     // Bouquet Message
     function showMessage(msg) {
       document.getElementById('flower-msg').innerText = msg;
-    }
-
-    // Songs Audio Setup
-    const songList = [
-      {
-        title: "Berapa Kali Kita Akan Saling Memaafkan",
-        artist: "Pamungkas",
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-      },
-      {
-        title: "My Love",
-        artist: "Westlife",
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-      },
-      {
-        title: "Shape of My Heart",
-        artist: "Backstreet Boys",
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-      }
-    ];
-
-    const audioElement = document.getElementById('audio-element');
-
-    function playTrack(index, el) {
-      const song = songList[index];
-      document.getElementById('song-title').innerText = song.title;
-      document.getElementById('song-artist').innerText = song.artist;
-      
-      audioElement.src = song.src;
-      audioElement.play();
-
-      document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
-      if(el) el.classList.add('active');
     }
 
     // Jar Notes Shake
