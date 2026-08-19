@@ -1,390 +1,631 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Al Sayang 💕</title>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <style>
-        :root {
-            --bg-color: #120914;
-            --card-bg: #1d1021;
-            --accent-yellow: #facc15;
-            --accent-soft: #fef08a;
-            --text-white: #f8fafc;
-            --text-sub: #cbd5e1;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            overflow-x: hidden;
-            position: relative;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Kimmy</title>
+  <style>
+    :root {
+      --bg-color: #160a18;
+      --card-bg: #27132a;
+      --accent: #ff7ebb;
+      --text-main: #fce8f3;
+      --text-sub: #d1a5c0;
+    }
 
-        /* Animasi Bunga Matahari & Spark Berjatuhan */
-        .falling-item {
-            position: fixed;
-            top: -10%;
-            font-size: 22px;
-            user-select: none;
-            pointer-events: none;
-            z-index: 100;
-            animation: fall 8s linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(105vh) rotate(360deg); opacity: 0.2; }
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
 
-        .container {
-            width: 90%;
-            max-width: 420px;
-            padding: 20px 10px;
-            z-index: 10;
-        }
-        .screen { display: none; }
-        .screen.active { display: block; }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            border: 1px solid rgba(250, 204, 21, 0.4);
-            position: relative;
-            margin-bottom: 20px;
-        }
+    /* Floating Petals Effect */
+    .cherry-blossom {
+      position: fixed;
+      top: -20px;
+      font-size: 18px;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1000;
+      animation: fall linear infinite;
+    }
 
-        /* Ornamen Bunga Matahari & Spark */
-        .card::before { content: "🌻✨"; position: absolute; top: 12px; left: 14px; font-size: 16px; opacity: 0.9; }
-        .card::after { content: "✨🌻"; position: absolute; bottom: 12px; right: 14px; font-size: 16px; opacity: 0.9; }
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0.1;
+      }
+    }
 
-        /* PIN Screen */
-        .pin-display {
-            font-size: 26px;
-            letter-spacing: 10px;
-            margin: 20px 0;
-            min-height: 38px;
-            color: var(--accent-yellow);
-            font-weight: bold;
-        }
-        .keypad {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 15px;
-        }
-        .key {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 15px;
-            border-radius: 14px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            user-select: none;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .key:active { background: var(--accent-yellow); color: #000; }
+    /* Container Layout */
+    .mobile-container {
+      width: 100%;
+      max-width: 420px;
+      min-height: 100vh;
+      padding: 20px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
 
-        /* Gift Screen */
-        .gift-box {
-            font-size: 85px;
-            cursor: pointer;
-            animation: bounce 2s infinite;
-            margin: 30px 0;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
+    .hidden {
+      display: none !important;
+    }
 
-        /* Content Screen */
-        .header-tag {
-            color: var(--accent-yellow);
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .main-title {
-            font-size: 22px;
-            font-weight: bold;
-            margin: 10px 0 5px 0;
-            color: var(--text-white);
-        }
-        .letter-text {
-            font-size: 14px;
-            line-height: 1.7;
-            color: var(--text-sub);
-            text-align: left;
-            margin-top: 15px;
-            white-space: pre-line;
-        }
+    /* Screen 1: Loading */
+    #screen-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      text-align: center;
+    }
 
-        /* Layout 2 Foto */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .photo-frame img {
-            width: 100%;
-            height: 170px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid rgba(250, 204, 21, 0.5);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-        }
+    .flower-spinner {
+      font-size: 45px;
+      animation: spin 3s linear infinite;
+      margin-bottom: 15px;
+    }
 
-        .caption {
-            font-style: italic;
-            margin-top: 12px;
-            color: var(--accent-yellow);
-            font-weight: 500;
-        }
-        .footer-text {
-            margin-top: 25px;
-            font-size: 16px;
-            color: var(--accent-yellow);
-            font-weight: bold;
-        }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-        /* Music Player Style */
-        .music-card {
-            background: rgba(29, 16, 33, 0.9);
-            border: 1px solid rgba(250, 204, 21, 0.4);
-            border-radius: 16px;
-            padding: 15px;
-            margin-top: 20px;
-        }
-        .music-title {
-            font-size: 13px;
-            color: var(--accent-soft);
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        .music-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        .btn-music {
-            background: var(--accent-yellow);
-            color: #120914;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 12px;
-            cursor: pointer;
-        }
-    </style>
+    /* Screen 2: Passcode */
+    #screen-passcode {
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .pass-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .pass-header h2 {
+      font-size: 22px;
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    .pass-dots {
+      display: flex;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+    }
+
+    .dot.filled {
+      background-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+
+    .key-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 20px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .key-btn:active {
+      background: rgba(255, 126, 187, 0.3);
+    }
+
+    .hint-text {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .error-msg {
+      color: #ff5555;
+      font-size: 12px;
+      margin-top: 8px;
+      height: 16px;
+    }
+
+    /* Screen 3: Gift Box */
+    #screen-gift {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      text-align: center;
+    }
+
+    .gift-box {
+      font-size: 80px;
+      margin-top: 20px;
+      cursor: pointer;
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    /* Screen 4: Main Content */
+    .main-section {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 25px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .sub-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    /* Bouquet */
+    .flowers-grid {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 15px 0 10px;
+    }
+
+    .flower-item {
+      font-size: 30px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.05);
+      padding: 8px;
+      border-radius: 12px;
+    }
+
+    .flower-message {
+      min-height: 38px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    /* Letter */
+    .letter-content {
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    /* Photo Frame */
+    .photo-card {
+      background: #fff;
+      padding: 10px 10px 20px 10px;
+      border-radius: 8px;
+      color: #333;
+      margin-top: 15px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .photo-caption {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #666;
+    }
+
+    /* Timeline */
+    .timeline-item {
+      text-align: left;
+      border-left: 2px solid var(--accent);
+      padding-left: 12px;
+      margin: 12px 0;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '★';
+      position: absolute;
+      left: -7px;
+      top: -2px;
+      color: var(--accent);
+      font-size: 10px;
+    }
+
+    /* Music Player */
+    .player-box {
+      background: rgba(0,0,0,0.25);
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    .playlist-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .playlist-item.active {
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+
+    /* Jar Shake */
+    .jar-btn {
+      background: var(--accent);
+      color: #160a18;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .shake {
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(-10deg); }
+      40% { transform: rotate(10deg); }
+      60% { transform: rotate(-10deg); }
+      80% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Efek Bunga Matahari & Spark Berjatuhan -->
-<div class="falling-item" style="left: 10%; animation-delay: 0s;">🌻</div>
-<div class="falling-item" style="left: 25%; animation-delay: 2s;">✨</div>
-<div class="falling-item" style="left: 45%; animation-delay: 4.5s;">🌻</div>
-<div class="falling-item" style="left: 65%; animation-delay: 1s;">✨</div>
-<div class="falling-item" style="left: 85%; animation-delay: 3s;">🌻</div>
+  <div id="petal-container"></div>
 
-<div class="container">
-
-    <!-- 1. PIN SCREEN -->
-    <div id="pinScreen" class="screen active">
-        <div class="card">
-            <div class="header-tag">🔒 Private Access</div>
-            <div class="main-title">Masukkan PIN Rahasia</div>
-            <div class="pin-display" id="pinDisplay">------</div>
-            <div class="keypad">
-                <div class="key" onclick="pressKey('1')">1</div>
-                <div class="key" onclick="pressKey('2')">2</div>
-                <div class="key" onclick="pressKey('3')">3</div>
-                <div class="key" onclick="pressKey('4')">4</div>
-                <div class="key" onclick="pressKey('5')">5</div>
-                <div class="key" onclick="pressKey('6')">6</div>
-                <div class="key" onclick="pressKey('7')">7</div>
-                <div class="key" onclick="pressKey('8')">8</div>
-                <div class="key" onclick="pressKey('9')">9</div>
-                <div class="key" onclick="pressKey('C')">C</div>
-                <div class="key" onclick="pressKey('0')">0</div>
-                <div class="key" onclick="pressKey('OK')">OK</div>
-            </div>
-            <div style="font-size: 12px; color: var(--text-sub); margin-top: 15px;">Hint: 010524 🌻✨</div>
-        </div>
+  <div class="mobile-container">
+    
+    <!-- Screen 1: Loading -->
+    <div id="screen-loading">
+      <div class="flower-spinner">🌸</div>
+      <p style="font-size: 14px; color: var(--text-sub);">Loading your surprise...</p>
     </div>
 
-    <!-- 2. GIFT SCREEN -->
-    <div id="giftScreen" class="screen">
-        <p style="font-size: 16px; color: var(--accent-soft);">Tap the gift box! 🌻✨</p>
-        <div class="gift-box" onclick="openGift()">🎁</div>
+    <!-- Screen 2: Passcode Lock -->
+    <div id="screen-passcode" class="hidden">
+      <div class="pass-header">
+        <p style="font-size: 28px;">🌷</p>
+        <h2>For You, Kimmy</h2>
+        <p style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Enter the secret code</p>
+      </div>
+
+      <div class="pass-dots">
+        <div class="dot" id="dot-0"></div>
+        <div class="dot" id="dot-1"></div>
+        <div class="dot" id="dot-2"></div>
+        <div class="dot" id="dot-3"></div>
+        <div class="dot" id="dot-4"></div>
+        <div class="dot" id="dot-5"></div>
+      </div>
+
+      <div class="keypad">
+        <button class="key-btn" onclick="pressKey('1')">1</button>
+        <button class="key-btn" onclick="pressKey('2')">2</button>
+        <button class="key-btn" onclick="pressKey('3')">3</button>
+        <button class="key-btn" onclick="pressKey('4')">4</button>
+        <button class="key-btn" onclick="pressKey('5')">5</button>
+        <button class="key-btn" onclick="pressKey('6')">6</button>
+        <button class="key-btn" onclick="pressKey('7')">7</button>
+        <button class="key-btn" onclick="pressKey('8')">8</button>
+        <button class="key-btn" onclick="pressKey('9')">9</button>
+        <button class="key-btn" onclick="pressKey('C')">✕</button>
+        <button class="key-btn" onclick="pressKey('0')">0</button>
+        <button class="key-btn" onclick="pressKey('OK')">↵</button>
+      </div>
+
+      <div id="error-msg" class="error-msg"></div>
+      <p class="hint-text">Hint: 111111 💜</p>
     </div>
 
-    <!-- 3. MAIN CONTENT SCREEN -->
-    <div id="mainScreen" class="screen">
-        <div class="header-tag">✨ 🌻 Special Day For You 🌻 ✨</div>
-        <div class="main-title">HAPPY BIRTHDAY<br>ahmad yasin al faruq 🎂</div>
-        <p style="font-size: 13px; color: var(--accent-yellow); margin-bottom: 20px;">~ Ke-22 Tahun ~</p>
-
-        <!-- Surat Ucapan -->
-        <div class="card">
-            <div class="header-tag" style="margin-bottom: 10px;">💌 Surat Ucapan</div>
-            <div class="letter-text">
-yaumul milad al sayang nda terasa al udah 22 tahun sekarang, aca mau bilang makasih banyak karena al udah lahir ke dunia ini dan tumbuh jadi sosok laki laki yang hebat, sabar, dan selalu bisa bikin aca merasa aman dan happy.
-
-diumur al yang baru ini, aca cuma mau doakan yang terbaik buat al, semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik, jangan pernah ragu sama kemampuan diri sendiri sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.
-
-semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al yang selalu aca sayang, enjoy ur special day my favorite person i love you so much ♡
-            </div>
-        </div>
-
-        <!-- Foto Memory (2 Foto) -->
-        <div class="card">
-            <div class="header-tag" style="margin-bottom: 10px;">📸 PHOTO MEMORY</div>
-            <div class="photo-grid">
-                <div class="photo-frame">
-                    <img src="IMG-20260616-WA0129.jpg" alt="Al Foto 1">
-                </div>
-                <div class="photo-frame">
-                    <!-- Otomatis mencoba beberapa nama file foto jika salah satu tidak ditemukan -->
-                    <img id="imgFoto2" src="1001025476.jpg" onerror="tryNextImage(this)" alt="Al Foto 2">
-                </div>
-            </div>
-            <div class="caption">al ganteng</div>
-        </div>
-
-        <!-- Music Player -->
-        <div class="music-card">
-            <div class="header-tag">🎵 Special Playlist</div>
-            <div class="music-title" id="songTitle">Pamungkas - Berapa Kali Kita Saling Memaafkan</div>
-            <audio id="bgMusic" loop>
-                <source id="audioSource" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
-            </audio>
-            <div class="music-controls">
-                <button class="btn-music" onclick="prevSong()">⏮ Prev</button>
-                <button class="btn-music" id="playBtn" onclick="togglePlay()">⏸ Pause</button>
-                <button class="btn-music" onclick="nextSong()">Next ⏭</button>
-            </div>
-        </div>
-
-        <div class="footer-text">dari aca cantik 🌻✨💕</div>
+    <!-- Screen 3: Gift Box -->
+    <div id="screen-gift" class="hidden">
+      <p style="font-size: 14px; color: var(--text-sub);">Tap the gift box to open it 🎁</p>
+      <div class="gift-box" onclick="openGift()">🎁</div>
     </div>
 
-</div>
+    <!-- Screen 4: Main Content -->
+    <div id="screen-main" class="hidden">
+      
+      <!-- Banner -->
+      <div class="main-section">
+        <p class="sub-title">Your Special Day 🎂</p>
+        <h1>HAPPY BIRTHDAY KIMMY</h1>
+        <p style="font-size: 12px; color: var(--accent);">Hari paling istimewa</p>
+        <p style="font-style: italic; font-size: 13px; color: var(--text-sub); margin-top: 12px;">
+          "Wishing you happiness, good health, and all your dreams come true." 💜
+        </p>
+      </div>
 
-<script>
-    const correctPin = "010524";
-    let inputPin = "";
+      <!-- Bouquet -->
+      <div class="main-section">
+        <p class="sub-title">A Little Gift</p>
+        <h2 style="font-size: 18px;">A Digital Bouquet for You</h2>
+        <p style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">Touch each flower to reveal its message</p>
+        
+        <div class="flowers-grid">
+          <span class="flower-item" onclick="showMessage('Kamu adalah orang terindah yang pernah aku kenal ✨')">🌺</span>
+          <span class="flower-item" onclick="showMessage('Ini semua untukmu — karena kamu pantas mendapatkan semua keindahan di dunia 🌸')">🌸</span>
+          <span class="flower-item" onclick="showMessage('Terima kasih sudah tumbuh dan hadir membawa kehangatan 🌷')">🌷</span>
+          <span class="flower-item" onclick="showMessage('Semoga harimu selalu dihiasi tawa dan kebahagiaan 🌻')">🌻</span>
+          <span class="flower-item" onclick="showMessage('I love you more than words can say ❤️')">🌹</span>
+        </div>
 
-    // Fungsi Otomatis Cek Nama File Gambar
-    const fallbackImages = ["1001025476.jpg", "foto2.jpg", "foto2.jpeg", "foto2.png", "1001025476.jpeg"];
-    let imgIndex = 0;
-    function tryNextImage(imgElement) {
-        imgIndex++;
-        if (imgIndex < fallbackImages.length) {
-            imgElement.src = fallbackImages[imgIndex];
-        }
+        <p id="flower-msg" class="flower-message">Klik salah satu bunga di atas...</p>
+      </div>
+
+      <!-- Letter -->
+      <div class="main-section">
+        <p class="sub-title">From My Heart</p>
+        <h2 style="font-size: 18px; margin-bottom: 12px;">A Letter For You</h2>
+        <div class="letter-content">
+          <p style="color: var(--accent); margin-bottom: 10px;">Untuk seseorang yang paling manis dan paling cantik,</p>
+          <p><b>My dearest Kimmy,</b></p>
+          <br>
+          <p>On this most special day, I want you to know that every single day with you is a gift beyond measure. You bring light into every corner of my life, even on the darkest days.</p>
+          <br>
+          <p>Your laughter is the most beautiful music I have ever heard. Thank you for being you — with all your uniqueness, the gentleness of your heart, and a spirit that never fades.</p>
+          <br>
+          <p style="text-align: right; margin-top: 15px; font-weight: bold; color: var(--accent);">With all my love,<br>your boyfriend 💜</p>
+        </div>
+      </div>
+
+      <!-- Photo Memories -->
+      <div class="main-section">
+        <p class="sub-title">A Collection of Memories</p>
+        <h2 style="font-size: 18px;">Our Photo Memories</h2>
+        
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60" alt="Kimmy Photo">
+          <p class="photo-caption">i love u kimmy sayangg 💕</p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="main-section">
+        <p class="sub-title">Our Journey</p>
+        <h2 style="font-size: 18px; margin-bottom: 12px;">Memories We've Written Together</h2>
+        
+        <div class="timeline-item">
+          <p style="font-size: 10px; color: var(--accent);">THE VERY BEGINNING</p>
+          <p style="font-weight: bold; font-size: 13px;">First Time We Met</p>
+          <p style="font-size: 11px; color: var(--text-sub);">The day everything changed.</p>
+        </div>
+
+        <div class="timeline-item">
+          <p style="font-size: 10px; color: var(--accent);">A MAGICAL MOMENT</p>
+          <p style="font-weight: bold; font-size: 13px;">Our First Conversation</p>
+          <p style="font-size: 11px; color: var(--text-sub);">The first words that started it all.</p>
+        </div>
+
+        <div class="timeline-item">
+          <p style="font-size: 10px; color: var(--accent);">YOUR VERY SPECIAL DAY</p>
+          <p style="font-weight: bold; font-size: 13px;">Happy Birthday!</p>
+          <p style="font-size: 11px; color: var(--text-sub);">Celebrating you, today and always.</p>
+        </div>
+      </div>
+
+      <!-- Playlist -->
+      <div class="main-section">
+        <p class="sub-title">Our Songs</p>
+        <h2 style="font-size: 18px; margin-bottom: 12px;">Special Playlist</h2>
+        
+        <div class="player-box">
+          <p style="font-size: 13px; font-weight: bold; color: var(--accent);" id="song-title">Shape of My Heart</p>
+          <p style="font-size: 11px; color: var(--text-sub);" id="song-artist">Backstreet Boys</p>
+          
+          <div class="playlist-item active" onclick="playSong('Shape of My Heart', 'Backstreet Boys', this)">
+            <span>🎵 Shape of My Heart</span>
+            <span>Backstreet Boys</span>
+          </div>
+          <div class="playlist-item" onclick="playSong('Angel Baby', 'Troye Sivan', this)">
+            <span>🎵 Angel Baby</span>
+            <span>Troye Sivan</span>
+          </div>
+          <div class="playlist-item" onclick="playSong('My Love', 'Westlife', this)">
+            <span>🎵 My Love</span>
+            <span>Westlife</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jar Notes -->
+      <div class="main-section">
+        <p class="sub-title">From My Heart To Yours</p>
+        <h2 style="font-size: 18px;">Reasons I'm Grateful for You</h2>
+        <p style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">Shake the jar and pick a note 🫙</p>
+        
+        <div style="font-size: 45px; margin: 15px 0;" id="jar-icon">🫙</div>
+        <button class="jar-btn" onclick="shakeJar()">Kocok Toples</button>
+        
+        <p id="jar-note" style="margin-top: 15px; font-size: 13px; color: var(--accent); min-height: 35px;"></p>
+      </div>
+
+      <!-- Closing -->
+      <div class="main-section" style="background: transparent; box-shadow: none;">
+        <p style="font-size: 11px; color: var(--accent);">🌸 With all my heart 🌸</p>
+        <h2 style="font-size: 18px; margin: 8px 0;">May your life always be filled with flowers</h2>
+        <p style="font-size: 12px; color: var(--text-sub); line-height: 1.5;">
+          Happy birthday, Kimmy. Semoga tahun ini membawa hari-hari yang bahagia, orang-orang yang tulus, dan begitu banyak alasan untuk tersenyum. Aamiin.
+        </p>
+        <p style="font-size: 11px; color: var(--accent); margin-top: 15px;">— with all my love and prayers 💜 —</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Petals Effect
+    function createPetal() {
+      const container = document.getElementById('petal-container');
+      const petal = document.createElement('div');
+      petal.classList.add('cherry-blossom');
+      petal.innerHTML = ['🌸', '✨', '💜', '🌺'][Math.floor(Math.random() * 4)];
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+      container.appendChild(petal);
+
+      setTimeout(() => petal.remove(), 5000);
     }
+    setInterval(createPetal, 300);
 
-    // Playlist 3 Lagu
-    const playlist = [
-        {
-            title: "Pamungkas - Berapa Kali Kita Saling Memaafkan",
-            src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3"
-        },
-        {
-            title: "Backstreet Boys - Shape Of My Heart",
-            src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3"
-        },
-        {
-            title: "Westlife - My Love",
-            src: "https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f7f458.mp3"
-        }
-    ];
-    let currentSongIndex = 0;
-    const audio = document.getElementById('bgMusic');
+    // Initial Loading Delay
+    setTimeout(() => {
+      document.getElementById('screen-loading').classList.add('hidden');
+      document.getElementById('screen-passcode').classList.remove('hidden');
+    }, 1800);
+
+    // Passcode Logic
+    let currentPin = "";
+    const correctPin = "111111";
 
     function pressKey(key) {
-        if (key === 'C') {
-            inputPin = "";
-        } else if (key === 'OK') {
-            checkPin();
-            return;
-        } else {
-            if (inputPin.length < 6) {
-                inputPin += key;
-            }
-        }
-        updateDisplay();
+      document.getElementById('error-msg').innerText = "";
+
+      if (key === 'C') {
+        currentPin = "";
+      } else if (key === 'OK') {
+        checkPin();
+        return;
+      } else if (currentPin.length < 6) {
+        currentPin += key;
+      }
+
+      updateDots();
+
+      if (currentPin.length === 6) {
+        checkPin();
+      }
     }
 
-    function updateDisplay() {
-        document.getElementById('pinDisplay').innerText = inputPin.padEnd(6, '-');
+    function updateDots() {
+      for (let i = 0; i < 6; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (i < currentPin.length) {
+          dot.classList.add('filled');
+        } else {
+          dot.classList.remove('filled');
+        }
+      }
     }
 
     function checkPin() {
-        if (inputPin === correctPin) {
-            document.getElementById('pinScreen').classList.remove('active');
-            document.getElementById('giftScreen').classList.add('active');
-        } else {
-            alert('PIN Salah! Coba lagi yaa 💕');
-            inputPin = "";
-            updateDisplay();
-        }
+      if (currentPin === correctPin) {
+        document.getElementById('screen-passcode').classList.add('hidden');
+        document.getElementById('screen-gift').classList.remove('hidden');
+      } else {
+        document.getElementById('error-msg').innerText = "Wrong code, try again 💜";
+        currentPin = "";
+        updateDots();
+      }
     }
 
+    // Gift Unlock
     function openGift() {
-        confetti({
-            particleCount: 130,
-            spread: 90,
-            origin: { y: 0.6 }
-        });
-        document.getElementById('giftScreen').classList.remove('active');
-        document.getElementById('mainScreen').classList.add('active');
-        
-        playSong();
+      document.getElementById('screen-gift').classList.add('hidden');
+      document.getElementById('screen-main').classList.remove('hidden');
     }
 
-    function playSong() {
-        audio.src = playlist[currentSongIndex].src;
-        document.getElementById('songTitle').innerText = playlist[currentSongIndex].title;
-        audio.play().catch(e => console.log("Audio play blocked"));
-        document.getElementById('playBtn').innerText = "⏸ Pause";
+    // Bouquet Message
+    function showMessage(msg) {
+      document.getElementById('flower-msg').innerText = msg;
     }
 
-    function togglePlay() {
-        if (audio.paused) {
-            audio.play();
-            document.getElementById('playBtn').innerText = "⏸ Pause";
-        } else {
-            audio.pause();
-            document.getElementById('playBtn').innerText = "▶ Play";
-        }
+    // Playlist Selector
+    function playSong(title, artist, el) {
+      document.getElementById('song-title').innerText = title;
+      document.getElementById('song-artist').innerText = artist;
+      
+      document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
     }
 
-    function nextSong() {
-        currentSongIndex = (currentSongIndex + 1) % playlist.length;
-        playSong();
-    }
+    // Jar Notes Shake
+    const notes = [
+      "Tawamu selalu bisa membuat hari yang buruk terasa lebih ringan.",
+      "Kamu adalah alasan terbaik untuk selalu tersenyum setiap hari.",
+      "Kebaikan hatimu adalah hal yang paling berharga.",
+      "Terima kasih sudah selalu ada dan tumbuh seluar biasa ini!"
+    ];
 
-    function prevSong() {
-        currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
-        playSong();
-    }
-</script>
+    function shakeJar() {
+      const jar = document.getElementById('jar-icon');
+      const noteDisplay = document.getElementById('jar-note');
+      
+      jar.classList.add('shake');
+      noteDisplay.innerText = "Membuka pesan...";
 
+      setTimeout(() => {
+        jar.classList.remove('shake');
+        const randomNote = notes[Math.floor(Math.random() * notes.length)];
+        noteDisplay.innerText = `"# ${randomNote}"`;
+      }, 500);
+    }
+  </script>
 </body>
 </html>
