@@ -247,9 +247,9 @@
 
     .photo-caption {
       margin-top: 10px;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
-      color: #444;
+      color: #333;
     }
 
     /* Jar Shake */
@@ -284,13 +284,11 @@
 
   <div class="mobile-container">
     
-    <!-- Screen 1: Loading -->
     <div id="screen-loading">
       <div class="flower-spinner">🌻</div>
       <p style="font-size: 14px; color: var(--text-sub);">Loading your surprise...</p>
     </div>
 
-    <!-- Screen 2: Passcode Lock -->
     <div id="screen-passcode" class="hidden">
       <div class="pass-header">
         <p style="font-size: 28px;">✨🌻✨</p>
@@ -323,203 +321,4 @@
       </div>
 
       <div id="error-msg" class="error-msg"></div>
-      <p style="margin-top: 20px; font-size: 13px; color: var(--text-sub);">Hint: 010524 ✨</p>
-    </div>
-
-    <!-- Screen 3: Gift Box -->
-    <div id="screen-gift" class="hidden">
-      <p style="font-size: 14px; color: var(--text-sub);">Tap the gift box to open it 🎁</p>
-      <div class="gift-box" onclick="openGift()">🎁</div>
-    </div>
-
-    <!-- Screen 4: Main Content -->
-    <div id="screen-main" class="hidden">
-      
-      <!-- Banner -->
-      <div class="main-section">
-        <p class="sub-title">Your Special Day 🎂</p>
-        <h1 style="font-size: 22px;">HAPPY BIRTHDAY 22nd<br>AL SAYANG ✨</h1>
-        <p style="font-size: 12px; color: var(--accent); margin-top: 4px;">Ahmad Yasin Al Faruq</p>
-        <p style="font-style: italic; font-size: 13px; color: var(--text-sub); margin-top: 12px;">
-          "Wishing you happiness, good health, and all your dreams come true." 🌻
-        </p>
-      </div>
-
-      <!-- Sunflower Bouquet -->
-      <div class="main-section">
-        <p class="sub-title">A Little Gift</p>
-        <h2 style="font-size: 17px;">Sunflower Bouquet for You 🌻</h2>
-        <p style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">Touch each spark to reveal its message</p>
-        
-        <div class="flowers-grid">
-          <span class="flower-item" onclick="showMessage('Al adalah sosok laki-laki yang paling sabar dan hebat ✨')">🌻</span>
-          <span class="flower-item" onclick="showMessage('Makasih ya udah selalu bikin aca merasa aman dan happy 💕')">✨</span>
-          <span class="flower-item" onclick="showMessage('Aca bakal selalu ada di sini buat dukung setiap prosesnya Al 🌷')">🌻</span>
-          <span class="flower-item" onclick="showMessage('Jangan pernah ragu sama kemampuan diri sendiri ya sayang ✨')">✨</span>
-          <span class="flower-item" onclick="showMessage('I love you so much, my favorite person! ❤️')">🌻</span>
-        </div>
-
-        <p id="flower-msg" class="flower-message">Klik salah satu bunga atau spark di atas...</p>
-      </div>
-
-      <!-- Letter -->
-      <div class="main-section">
-        <p class="sub-title">From My Heart</p>
-        <h2 style="font-size: 17px; margin-bottom: 12px;">A Letter For You 💌</h2>
-        <div class="letter-content">
-          <p style="color: var(--accent); margin-bottom: 10px;">Untuk Al Sayang,</p>
-          <p>Yaumul milad al sayang ​nda terasa al udah 22 tahun sekarang, aca mau bilang makasih banyak karena al udah lahir ke dunia ini dan tumbuh jadi sosok laki laki yang hebat, sabar, dan selalu bisa bikin aca merasa aman dan happy.</p>
-          <br>
-          <p>Diumur al yang baru ini, aca cuma mau doakan yang terbaik buat al, semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik, jangan pernah ragu sama kemampuan diri sendiri sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.</p>
-          <br>
-          <p>Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al yang selalu aca sayang, enjoy ur special day my favorite person i love you so much ♡</p>
-          <br>
-          <p style="text-align: right; margin-top: 15px; font-weight: bold; color: var(--accent);">Dari aca cantik 💖</p>
-        </div>
-      </div>
-
-      <!-- Photo Memories -->
-      <div class="main-section">
-        <p class="sub-title">A Collection of Memories</p>
-        <h2 style="font-size: 17px;">Our Photo Memories ✨</h2>
-        
-        <!-- Foto Ganteng Al -->
-        <div class="photo-card">
-          <img src="1001025477.jpg" alt="Foto Ganteng Al">
-          <p class="photo-caption">foto gantengnya aca ✨</p>
-        </div>
-
-        <!-- Foto Berdua Al & Aca -->
-        <div class="photo-card" style="margin-top: 20px;">
-          <img src="1001025476.jpg" alt="Al & Aca Cantik">
-          <p class="photo-caption">Al & Aca Cantik 💕</p>
-        </div>
-      </div>
-
-      <!-- Jar Notes -->
-      <div class="main-section">
-        <p class="sub-title">From My Heart To Yours</p>
-        <h2 style="font-size: 17px;">Reasons I'm Grateful for Al</h2>
-        <p style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">Shake the jar and pick a note 🫙</p>
-        
-        <div style="font-size: 45px; margin: 15px 0;" id="jar-icon">🫙</div>
-        <button class="jar-btn" onclick="shakeJar()">Kocok Toples</button>
-        
-        <p id="jar-note" style="margin-top: 15px; font-size: 13px; color: var(--accent-spark); min-height: 35px;"></p>
-      </div>
-
-      <!-- Closing -->
-      <div class="main-section" style="background: transparent; box-shadow: none;">
-        <p style="font-size: 11px; color: var(--accent);">🌻 With all my heart 🌻</p>
-        <h2 style="font-size: 18px; margin: 8px 0;">Happy 22nd Birthday, Al Sayang!</h2>
-        <p style="font-size: 12px; color: var(--text-sub); line-height: 1.5;">
-          Semoga umur 22 ini membawa banyak kebahagiaan, kemudahan, dan keberkahan dalam setiap langkahnya Al.
-        </p>
-        <p style="font-size: 11px; color: var(--accent); margin-top: 15px;">— dari aca cantik 💖 —</p>
-      </div>
-
-    </div>
-
-  </div>
-
-  <script>
-    // Floating Sunflowers and Sparks
-    function createItem() {
-      const container = document.getElementById('item-container');
-      const item = document.createElement('div');
-      item.classList.add('floating-item');
-      item.innerHTML = ['🌻', '✨', '💛', '🌟'][Math.floor(Math.random() * 4)];
-      item.style.left = Math.random() * 100 + 'vw';
-      item.style.animationDuration = Math.random() * 3 + 2 + 's';
-      container.appendChild(item);
-
-      setTimeout(() => item.remove(), 5000);
-    }
-    setInterval(createItem, 300);
-
-    // Initial Loading Delay
-    setTimeout(() => {
-      document.getElementById('screen-loading').classList.add('hidden');
-      document.getElementById('screen-passcode').classList.remove('hidden');
-    }, 1800);
-
-    // Passcode Logic (010524)
-    let currentPin = "";
-    const correctPin = "010524";
-
-    function pressKey(key) {
-      document.getElementById('error-msg').innerText = "";
-
-      if (key === 'C') {
-        currentPin = "";
-      } else if (key === 'OK') {
-        checkPin();
-        return;
-      } else if (currentPin.length < 6) {
-        currentPin += key;
-      }
-
-      updateDots();
-
-      if (currentPin.length === 6) {
-        checkPin();
-      }
-    }
-
-    function updateDots() {
-      for (let i = 0; i < 6; i++) {
-        const dot = document.getElementById(`dot-${i}`);
-        if (i < currentPin.length) {
-          dot.classList.add('filled');
-        } else {
-          dot.classList.remove('filled');
-        }
-      }
-    }
-
-    function checkPin() {
-      if (currentPin === correctPin) {
-        document.getElementById('screen-passcode').classList.add('hidden');
-        document.getElementById('screen-gift').classList.remove('hidden');
-      } else {
-        document.getElementById('error-msg').innerText = "Wrong code, try again ✨";
-        currentPin = "";
-        updateDots();
-      }
-    }
-
-    // Gift Unlock
-    function openGift() {
-      document.getElementById('screen-gift').classList.add('hidden');
-      document.getElementById('screen-main').classList.remove('hidden');
-    }
-
-    // Bouquet Message
-    function showMessage(msg) {
-      document.getElementById('flower-msg').innerText = msg;
-    }
-
-    // Jar Notes Shake
-    const notes = [
-      "Al selalu bisa bikin aca merasa aman dan happy.",
-      "Makasih ya udah tumbuh jadi laki-laki yang hebat dan sabar.",
-      "Aca bangga banget sama setiap proses yang Al jalani.",
-      "Semoga semua impian Al di usia 22 ini tercapai satu per satu!"
-    ];
-
-    function shakeJar() {
-      const jar = document.getElementById('jar-icon');
-      const noteDisplay = document.getElementById('jar-note');
-      
-      jar.classList.add('shake');
-      noteDisplay.innerText = "Membuka pesan...";
-
-      setTimeout(() => {
-        jar.classList.remove('shake');
-        const randomNote = notes[Math.floor(Math.random() * notes.length)];
-        noteDisplay.innerText = `"# ${randomNote}"`;
-      }, 500);
-    }
-  </script>
-</body>
-</html>
+      <p style="margin-top: 20px; font-size: 13px; color: var(--text-sub);">Hint: 0
