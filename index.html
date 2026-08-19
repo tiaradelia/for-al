@@ -1,324 +1,297 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy 22nd Birthday Al Sayang 🌻</title>
-  <style>
-    :root {
-      --bg-color: #1c150c;
-      --card-bg: #2a1f13;
-      --accent: #ffc107;
-      --accent-spark: #ffe082;
-      --text-main: #fff8e1;
-      --text-sub: #d7ccc8;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Happy Birthday Al Sayang ♡</title>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#09060b;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,#8d397040,transparent 30%),
+    radial-gradient(circle at 80% 80%,#5e318040,transparent 35%);
+  pointer-events:none
+}
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+.page{
+  min-height:100vh;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:25px 18px;
+  position:relative
+}
+.page.active{display:flex}
 
-    /* Floating Sunflowers & Sparks */
-    .floating-item {
-      position: fixed;
-      top: -20px;
-      font-size: 20px;
-      user-select: none;
-      pointer-events: none;
-      z-index: 1000;
-      animation: fall linear infinite;
-    }
+.card{
+  width:min(650px,100%);
+  padding:28px 22px;
+  border-radius:28px;
+  background:#ffffff0d;
+  border:1px solid #ffffff20;
+  backdrop-filter:blur(15px);
+  box-shadow:0 20px 80px #0008
+}
 
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(105vh) rotate(360deg);
-        opacity: 0.1;
-      }
-    }
+h1,h2{
+  font-family:Georgia,serif;
+  font-weight:500
+}
 
-    /* Layout Container */
-    .mobile-container {
-      width: 100%;
-      max-width: 420px;
-      min-height: 100vh;
-      padding: 20px 16px 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 10;
-    }
+.pink{color:#f3a6d0}
 
-    .hidden {
-      display: none !important;
-    }
+.btn{
+  margin-top:20px;
+  border:0;
+  border-radius:50px;
+  padding:13px 24px;
+  background:linear-gradient(135deg,#f5afd4,#b96ca9);
+  color:#260b20;
+  font-weight:bold;
+  cursor:pointer
+}
 
-    /* Screen 1: Loading */
-    #screen-loading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 80vh;
-      text-align: center;
-    }
+.flower{
+  position:fixed;
+  font-size:30px;
+  animation:float 4s infinite ease-in-out;
+  pointer-events:none
+}
+.f1{top:8%;left:8%}
+.f2{top:25%;right:7%}
+.f3{bottom:12%;left:8%}
+.f4{bottom:20%;right:10%}
 
-    .flower-spinner {
-      font-size: 50px;
-      animation: spin 3s linear infinite;
-      margin-bottom: 15px;
-    }
+.spark{
+  position:fixed;
+  color:white;
+  animation:spark 2s infinite;
+  pointer-events:none
+}
+@keyframes spark{
+  50%{opacity:.15;transform:scale(.5)}
+}
+@keyframes float{
+  50%{transform:translateY(-12px) rotate(8deg)}
+}
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+#passwordPage{text-align:center}
 
-    /* Screen 2: Passcode */
-    #screen-passcode {
-      width: 100%;
-      max-width: 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-    }
+.lockFlower{
+  font-size:55px;
+  margin-bottom:15px;
+  animation:float 2.5s infinite
+}
 
-    .pass-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+.lockTitle{font-size:35px}
+.lockText{
+  color:#cdbccd;
+  font-size:13px;
+  line-height:1.7;
+  margin-top:12px
+}
 
-    .pass-dots {
-      display: flex;
-      gap: 12px;
-      margin: 20px 0;
-    }
+input{
+  width:min(280px,90%);
+  margin-top:20px;
+  padding:15px;
+  border-radius:15px;
+  border:1px solid #ffffff25;
+  background:#ffffff0b;
+  color:white;
+  outline:none;
+  text-align:center;
+  letter-spacing:5px
+}
 
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-    }
+#error{
+  height:20px;
+  margin-top:8px;
+  color:#f19ac8;
+  font-size:12px
+}
 
-    .dot.filled {
-      background-color: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
+.hero{text-align:center}
+.heroCake{font-size:60px}
+.hero h1{
+  font-size:54px;
+  line-height:.95;
+  margin-top:12px
+}
+.subtitle{
+  margin-top:20px;
+  color:#d8cbd8;
+  font-family:Georgia,serif;
+  font-size:19px
+}
 
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      width: 100%;
-    }
+.line{
+  width:90px;
+  height:1px;
+  margin:20px auto;
+  background:linear-gradient(90deg,transparent,#efa7cf,transparent)
+}
 
-    .key-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-size: 20px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
+.small{
+  color:#978798;
+  font-size:10px;
+  letter-spacing:2px;
+  margin-top:25px
+}
 
-    .key-btn:active {
-      background: rgba(255, 193, 7, 0.3);
-    }
+.kicker{
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:#c59abb;
+  font-size:10px;
+  margin-bottom:8px
+}
 
-    .error-msg {
-      color: #ff5555;
-      font-size: 12px;
-      margin-top: 8px;
-      height: 16px;
-    }
+.title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:20px
+}
 
-    /* Screen 3: Gift Box */
-    #screen-gift {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 80vh;
-      text-align: center;
-    }
+.letter{
+  white-space:pre-line;
+  color:#eaddea;
+  font-family:Georgia,serif;
+  font-size:18px;
+  line-height:1.7
+}
 
-    .gift-box {
-      font-size: 80px;
-      margin-top: 20px;
-      cursor: pointer;
-      animation: pulse 1.5s infinite alternate;
-    }
+.signature{
+  margin-top:25px;
+  text-align:right;
+  color:#f1afd1;
+  font-family:Georgia,serif;
+  font-size:21px
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
+.photos{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
 
-    /* Main Sections */
-    .main-section {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 25px;
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
+.photos img{
+  width:100%;
+  aspect-ratio:1/1.2;
+  object-fit:cover;
+  border-radius:18px;
+  border:1px solid #ffffff20
+}
 
-    .sub-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--accent);
-      margin-bottom: 5px;
-    }
+.caption{
+  text-align:center;
+  color:#f2a8ce;
+  font-family:Georgia,serif;
+  font-size:23px;
+  margin-top:16px
+}
 
-    /* Bouquet */
-    .flowers-grid {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 15px 0 10px;
-    }
+.final{
+  text-align:center;
+  margin-top:35px
+}
 
-    .flower-item {
-      font-size: 32px;
-      cursor: pointer;
-      background: rgba(255,255,255,0.05);
-      padding: 8px;
-      border-radius: 12px;
-    }
+.final h2{
+  font-size:35px
+}
 
-    .flower-message {
-      min-height: 38px;
-      font-size: 13px;
-      color: var(--accent-spark);
-      margin-top: 10px;
-      line-height: 1.4;
-    }
+.final p{
+  color:#ad9eae;
+  font-size:12px;
+  margin-top:10px
+}
 
-    /* Letter */
-    .letter-content {
-      text-align: left;
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--text-main);
-    }
+.music{
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  z-index:50;
+  display:none;
+  background:#180c18dd;
+  border:1px solid #ffffff20;
+  padding:9px 13px;
+  border-radius:50px;
+  backdrop-filter:blur(10px);
+  font-size:11px
+}
 
-    /* Photo Frame */
-    .photo-card {
-      background: #fff;
-      padding: 10px 10px 18px 10px;
-      border-radius: 8px;
-      color: #333;
-      margin-top: 15px;
-    }
+.music button{
+  border:0;
+  background:none;
+  color:white;
+  margin-left:7px;
+  cursor:pointer
+}
 
-    .photo-card img {
-      width: 100%;
-      border-radius: 4px;
-      display: block;
-      object-fit: cover;
-    }
-
-    .photo-caption {
-      margin-top: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    /* Jar Shake */
-    .jar-btn {
-      background: var(--accent);
-      color: #1c150c;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .shake {
-      animation: shake 0.5s;
-    }
-
-    @keyframes shake {
-      0% { transform: rotate(0deg); }
-      20% { transform: rotate(-10deg); }
-      40% { transform: rotate(10deg); }
-      60% { transform: rotate(-10deg); }
-      80% { transform: rotate(10deg); }
-      100% { transform: rotate(0deg); }
-    }
-  </style>
+@media(max-width:450px){
+  .hero h1{font-size:47px}
+  .title{font-size:34px}
+  .letter{font-size:17px}
+}
+</style>
 </head>
+
 <body>
 
-  <div id="item-container"></div>
+<!-- ORNAMEN -->
+<div class="flower f1">🌻</div>
+<div class="flower f2">🌻</div>
+<div class="flower f3">🌻</div>
+<div class="flower f4">🌻</div>
 
-  <div class="mobile-container">
-    
-    <div id="screen-loading">
-      <div class="flower-spinner">🌻</div>
-      <p style="font-size: 14px; color: var(--text-sub);">Loading your surprise...</p>
-    </div>
+<div class="spark" style="top:15%;left:25%">✦</div>
+<div class="spark" style="top:32%;right:22%">✦</div>
+<div class="spark" style="top:70%;left:17%">✦</div>
+<div class="spark" style="bottom:18%;right:25%">✦</div>
 
-    <div id="screen-passcode" class="hidden">
-      <div class="pass-header">
-        <p style="font-size: 28px;">✨🌻✨</p>
-        <h2 style="font-size: 20px;">For You, Al Sayang</h2>
-        <p style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Enter the secret code</p>
-      </div>
 
-      <div class="pass-dots">
-        <div class="dot" id="dot-0"></div>
-        <div class="dot" id="dot-1"></div>
-        <div class="dot" id="dot-2"></div>
-        <div class="dot" id="dot-3"></div>
-        <div class="dot" id="dot-4"></div>
-        <div class="dot" id="dot-5"></div>
-      </div>
+<!-- PASSWORD -->
+<section id="passwordPage" class="page active">
 
-      <div class="keypad">
-        <button class="key-btn" onclick="pressKey('1')">1</button>
-        <button class="key-btn" onclick="pressKey('2')">2</button>
-        <button class="key-btn" onclick="pressKey('3')">3</button>
-        <button class="key-btn" onclick="pressKey('4')">4</button>
-        <button class="key-btn" onclick="pressKey('5')">5</button>
-        <button class="key-btn" onclick="pressKey('6')">6</button>
-        <button class="key-btn" onclick="pressKey('7')">7</button>
-        <button class="key-btn" onclick="pressKey('8')">8</button>
-        <button class="key-btn" onclick="pressKey('9')">9</button>
-        <button class="key-btn" onclick="pressKey('C')">✕</button>
-        <button class="key-btn" onclick="pressKey('0')">0</button>
-        <button class="key-btn" onclick="pressKey('OK')">↵</button>
-      </div>
+  <div class="lockFlower">🌻</div>
 
-      <div id="error-msg" class="error-msg"></div>
-      <p style="margin-top: 20px; font-size: 13px; color: var(--text-sub);">Hint: 0
+  <h1 class="lockTitle">
+    A little surprise<br>
+    <span class="pink">for Al ♡</span>
+  </h1>
+
+  <p class="lockText">
+    Ada sesuatu yang Aca siapin buat Al.<br>
+    Masukin password dulu ya sayang.
+  </p>
+
+  <input
+    id="pass"
+    type="password"
+    maxlength="6"
+    inputmode="numeric"
+    placeholder="••••••"
+  >
+
+  <button class="btn" onclick="openGift()">
+    Open my surprise ♡
+  </button>
+
+  <div id="error"></div>
+
+</section>
+
+
+<!-- HOME -->
