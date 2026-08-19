@@ -63,7 +63,7 @@
             margin-bottom: 20px;
         }
 
-        /* Ornamen Bunga Matahari & Spark di Sudut Kartu */
+        /* Ornamen Bunga Matahari & Spark */
         .card::before { content: "🌻✨"; position: absolute; top: 12px; left: 14px; font-size: 16px; opacity: 0.9; }
         .card::after { content: "✨🌻"; position: absolute; bottom: 12px; right: 14px; font-size: 16px; opacity: 0.9; }
 
@@ -129,13 +129,23 @@
             margin-top: 15px;
             white-space: pre-line;
         }
+
+        /* Tampilan 2 Foto Sejajar (Grid) */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
         .photo-frame img {
             width: 100%;
-            border-radius: 14px;
-            margin-top: 10px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
             border: 2px solid rgba(250, 204, 21, 0.5);
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
+
         .caption {
             font-style: italic;
             margin-top: 12px;
@@ -235,27 +245,32 @@
             <div class="letter-text">
 yaumul milad al sayang nda terasa al udah 22 tahun sekarang, aca mau bilang makasih banyak karena al udah lahir ke dunia ini dan tumbuh jadi sosok laki laki yang hebat, sabar, dan selalu bisa bikin aca merasa aman dan happy.
 
-diumur al yang baru ini, aca cuma mau doakan yang terbaik buat al, semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik, jangan pernah ragu sama kemampuan diri sendiri sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.
+diumur al yang baru ini, aca cuma mau doakan yang terbaik buat al, semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik, jangan pernah ragu sama kemampuan diri kamu sendiri nah sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.
 
 semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al yang selalu aca sayang, enjoy ur special day my favorite person i love you so much ♡
             </div>
         </div>
 
-        <!-- Foto Memory -->
+        <!-- Foto Memory (2 Foto) -->
         <div class="card">
             <div class="header-tag" style="margin-bottom: 10px;">📸 PHOTO MEMORY</div>
-            <div class="photo-frame">
-                <img src="IMG-20260616-WA0129.jpg" alt="ahmad yasin al faruq">
+            <div class="photo-grid">
+                <div class="photo-frame">
+                    <img src="IMG-20260616-WA0129.jpg" alt="Al Foto 1">
+                </div>
+                <div class="photo-frame">
+                    <img src="1001025476.jpg" alt="Al Foto 2">
+                </div>
             </div>
             <div class="caption">al ganteng</div>
         </div>
 
-        <!-- Music Player (3 Lagu Pemungkas, Backstreet Boys, Westlife) -->
+        <!-- Music Player -->
         <div class="music-card">
             <div class="header-tag">🎵 Special Playlist</div>
             <div class="music-title" id="songTitle">Pamungkas - Berapa Kali Kita Saling Memaafkan</div>
             <audio id="bgMusic" loop>
-                <source id="audioSource" src="https://raw.githubusercontent.com/tiaradelia/for-al/main/pamungkas.mp3" type="audio/mpeg">
+                <source id="audioSource" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
             </audio>
             <div class="music-controls">
                 <button class="btn-music" onclick="prevSong()">⏮ Prev</button>
@@ -362,5 +377,4 @@ semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
 
 </body>
 </html>
-    
     
