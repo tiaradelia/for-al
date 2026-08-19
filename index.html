@@ -130,7 +130,7 @@
             white-space: pre-line;
         }
 
-        /* Tampilan 2 Foto Sejajar (Grid) */
+        /* Layout 2 Foto */
         .photo-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -139,7 +139,7 @@
         }
         .photo-frame img {
             width: 100%;
-            height: 160px;
+            height: 170px;
             object-fit: cover;
             border-radius: 12px;
             border: 2px solid rgba(250, 204, 21, 0.5);
@@ -194,7 +194,7 @@
 </head>
 <body>
 
-<!-- Efek Bunga Matahari & Spark Gugur -->
+<!-- Efek Bunga Matahari & Spark Berjatuhan -->
 <div class="falling-item" style="left: 10%; animation-delay: 0s;">🌻</div>
 <div class="falling-item" style="left: 25%; animation-delay: 2s;">✨</div>
 <div class="falling-item" style="left: 45%; animation-delay: 4.5s;">🌻</div>
@@ -259,7 +259,8 @@ semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
                     <img src="IMG-20260616-WA0129.jpg" alt="Al Foto 1">
                 </div>
                 <div class="photo-frame">
-                    <img src="1001025476.jpg" alt="Al Foto 2">
+                    <!-- Otomatis mencoba beberapa nama file foto jika salah satu tidak ditemukan -->
+                    <img id="imgFoto2" src="1001025476.jpg" onerror="tryNextImage(this)" alt="Al Foto 2">
                 </div>
             </div>
             <div class="caption">al ganteng</div>
@@ -287,6 +288,16 @@ semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
 <script>
     const correctPin = "010524";
     let inputPin = "";
+
+    // Fungsi Otomatis Cek Nama File Gambar
+    const fallbackImages = ["1001025476.jpg", "foto2.jpg", "foto2.jpeg", "foto2.png", "1001025476.jpeg"];
+    let imgIndex = 0;
+    function tryNextImage(imgElement) {
+        imgIndex++;
+        if (imgIndex < fallbackImages.length) {
+            imgElement.src = fallbackImages[imgIndex];
+        }
+    }
 
     // Playlist 3 Lagu
     const playlist = [
@@ -377,4 +388,3 @@ semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al 
 
 </body>
 </html>
-    
