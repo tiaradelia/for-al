@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Kimmy</title>
+  <title>Happy 22nd Birthday Al Sayang 🌻</title>
   <style>
     :root {
-      --bg-color: #160a18;
-      --card-bg: #27132a;
-      --accent: #ff7ebb;
-      --text-main: #fce8f3;
-      --text-sub: #d1a5c0;
+      --bg-color: #1c150c;
+      --card-bg: #2a1f13;
+      --accent: #ffc107;
+      --accent-spark: #ffe082;
+      --text-main: #fff8e1;
+      --text-sub: #d7ccc8;
     }
 
     * {
@@ -30,11 +31,11 @@
       position: relative;
     }
 
-    /* Floating Petals Effect */
-    .cherry-blossom {
+    /* Floating Sunflowers & Sparks */
+    .floating-item {
       position: fixed;
       top: -20px;
-      font-size: 18px;
+      font-size: 20px;
       user-select: none;
       pointer-events: none;
       z-index: 1000;
@@ -52,7 +53,7 @@
       }
     }
 
-    /* Container Layout */
+    /* Layout Container */
     .mobile-container {
       width: 100%;
       max-width: 420px;
@@ -80,7 +81,7 @@
     }
 
     .flower-spinner {
-      font-size: 45px;
+      font-size: 50px;
       animation: spin 3s linear infinite;
       margin-bottom: 15px;
     }
@@ -105,12 +106,6 @@
       margin-bottom: 20px;
     }
 
-    .pass-header h2 {
-      font-size: 22px;
-      margin-top: 5px;
-      font-weight: 600;
-    }
-
     .pass-dots {
       display: flex;
       gap: 12px;
@@ -126,7 +121,7 @@
 
     .dot.filled {
       background-color: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
+      box-shadow: 0 0 10px var(--accent);
     }
 
     .keypad {
@@ -150,13 +145,7 @@
     }
 
     .key-btn:active {
-      background: rgba(255, 126, 187, 0.3);
-    }
-
-    .hint-text {
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--text-sub);
+      background: rgba(255, 193, 7, 0.3);
     }
 
     .error-msg {
@@ -188,7 +177,7 @@
       100% { transform: scale(1.1); }
     }
 
-    /* Screen 4: Main Content */
+    /* Main Sections */
     .main-section {
       width: 100%;
       text-align: center;
@@ -196,7 +185,7 @@
       background: var(--card-bg);
       padding: 20px;
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
 
     .sub-title {
@@ -205,11 +194,6 @@
       letter-spacing: 2px;
       color: var(--accent);
       margin-bottom: 5px;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 8px;
     }
 
     /* Bouquet */
@@ -222,7 +206,7 @@
     }
 
     .flower-item {
-      font-size: 30px;
+      font-size: 32px;
       cursor: pointer;
       background: rgba(255,255,255,0.05);
       padding: 8px;
@@ -232,7 +216,7 @@
     .flower-message {
       min-height: 38px;
       font-size: 13px;
-      color: var(--accent);
+      color: var(--accent-spark);
       margin-top: 10px;
       line-height: 1.4;
     }
@@ -248,7 +232,7 @@
     /* Photo Frame */
     .photo-card {
       background: #fff;
-      padding: 10px 10px 20px 10px;
+      padding: 10px 10px 18px 10px;
       border-radius: 8px;
       color: #333;
       margin-top: 15px;
@@ -261,40 +245,23 @@
     }
 
     .photo-caption {
-      margin-top: 8px;
+      margin-top: 10px;
       font-size: 12px;
       font-weight: 600;
-      color: #666;
-    }
-
-    /* Timeline */
-    .timeline-item {
-      text-align: left;
-      border-left: 2px solid var(--accent);
-      padding-left: 12px;
-      margin: 12px 0;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '★';
-      position: absolute;
-      left: -7px;
-      top: -2px;
-      color: var(--accent);
-      font-size: 10px;
+      color: #444;
     }
 
     /* Music Player */
     .player-box {
-      background: rgba(0,0,0,0.25);
-      padding: 12px;
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
       border-radius: 12px;
     }
 
     .playlist-item {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 10px;
       background: rgba(255,255,255,0.05);
       border-radius: 8px;
@@ -311,7 +278,7 @@
     /* Jar Shake */
     .jar-btn {
       background: var(--accent);
-      color: #160a18;
+      color: #1c150c;
       border: none;
       padding: 10px 20px;
       border-radius: 20px;
@@ -336,21 +303,21 @@
 </head>
 <body>
 
-  <div id="petal-container"></div>
+  <div id="item-container"></div>
 
   <div class="mobile-container">
     
     <!-- Screen 1: Loading -->
     <div id="screen-loading">
-      <div class="flower-spinner">🌸</div>
+      <div class="flower-spinner">🌻</div>
       <p style="font-size: 14px; color: var(--text-sub);">Loading your surprise...</p>
     </div>
 
     <!-- Screen 2: Passcode Lock -->
     <div id="screen-passcode" class="hidden">
       <div class="pass-header">
-        <p style="font-size: 28px;">🌷</p>
-        <h2>For You, Kimmy</h2>
+        <p style="font-size: 28px;">✨🌻✨</p>
+        <h2 style="font-size: 20px;">For You, Al Sayang</h2>
         <p style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Enter the secret code</p>
       </div>
 
@@ -379,7 +346,7 @@
       </div>
 
       <div id="error-msg" class="error-msg"></div>
-      <p class="hint-text">Hint: 111111 💜</p>
+      <p style="margin-top: 20px; font-size: 13px; color: var(--text-sub);">Hint: 010524 ✨</p>
     </div>
 
     <!-- Screen 3: Gift Box -->
@@ -394,101 +361,86 @@
       <!-- Banner -->
       <div class="main-section">
         <p class="sub-title">Your Special Day 🎂</p>
-        <h1>HAPPY BIRTHDAY KIMMY</h1>
-        <p style="font-size: 12px; color: var(--accent);">Hari paling istimewa</p>
+        <h1 style="font-size: 22px;">HAPPY BIRTHDAY 22nd<br>AL SAYANG ✨</h1>
+        <p style="font-size: 12px; color: var(--accent); margin-top: 4px;">Ahmad Yasin Al Faruq</p>
         <p style="font-style: italic; font-size: 13px; color: var(--text-sub); margin-top: 12px;">
-          "Wishing you happiness, good health, and all your dreams come true." 💜
+          "Wishing you happiness, good health, and all your dreams come true." 🌻
         </p>
       </div>
 
-      <!-- Bouquet -->
+      <!-- Sunflower Bouquet -->
       <div class="main-section">
         <p class="sub-title">A Little Gift</p>
-        <h2 style="font-size: 18px;">A Digital Bouquet for You</h2>
-        <p style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">Touch each flower to reveal its message</p>
+        <h2 style="font-size: 17px;">Sunflower Bouquet for You 🌻</h2>
+        <p style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">Touch each spark to reveal its message</p>
         
         <div class="flowers-grid">
-          <span class="flower-item" onclick="showMessage('Kamu adalah orang terindah yang pernah aku kenal ✨')">🌺</span>
-          <span class="flower-item" onclick="showMessage('Ini semua untukmu — karena kamu pantas mendapatkan semua keindahan di dunia 🌸')">🌸</span>
-          <span class="flower-item" onclick="showMessage('Terima kasih sudah tumbuh dan hadir membawa kehangatan 🌷')">🌷</span>
-          <span class="flower-item" onclick="showMessage('Semoga harimu selalu dihiasi tawa dan kebahagiaan 🌻')">🌻</span>
-          <span class="flower-item" onclick="showMessage('I love you more than words can say ❤️')">🌹</span>
+          <span class="flower-item" onclick="showMessage('Al adalah sosok laki-laki yang paling sabar dan hebat ✨')">🌻</span>
+          <span class="flower-item" onclick="showMessage('Makasih ya udah selalu bikin aca merasa aman dan happy 💕')">✨</span>
+          <span class="flower-item" onclick="showMessage('Aca bakal selalu ada di sini buat dukung setiap prosesnya Al 🌷')">🌻</span>
+          <span class="flower-item" onclick="showMessage('Jangan pernah ragu sama kemampuan diri sendiri ya sayang ✨')">✨</span>
+          <span class="flower-item" onclick="showMessage('I love you so much, my favorite person! ❤️')">🌻</span>
         </div>
 
-        <p id="flower-msg" class="flower-message">Klik salah satu bunga di atas...</p>
+        <p id="flower-msg" class="flower-message">Klik salah satu bunga atau spark di atas...</p>
       </div>
 
       <!-- Letter -->
       <div class="main-section">
         <p class="sub-title">From My Heart</p>
-        <h2 style="font-size: 18px; margin-bottom: 12px;">A Letter For You</h2>
+        <h2 style="font-size: 17px; margin-bottom: 12px;">A Letter For You 💌</h2>
         <div class="letter-content">
-          <p style="color: var(--accent); margin-bottom: 10px;">Untuk seseorang yang paling manis dan paling cantik,</p>
-          <p><b>My dearest Kimmy,</b></p>
+          <p style="color: var(--accent); margin-bottom: 10px;">Untuk Al Sayang,</p>
+          <p>Yaumul milad al sayang ​nda terasa al udah 22 tahun sekarang, aca mau bilang makasih banyak karena al udah lahir ke dunia ini dan tumbuh jadi sosok laki laki yang hebat, sabar, dan selalu bisa bikin aca merasa aman dan happy.</p>
           <br>
-          <p>On this most special day, I want you to know that every single day with you is a gift beyond measure. You bring light into every corner of my life, even on the darkest days.</p>
+          <p>Diumur al yang baru ini, aca cuma mau doakan yang terbaik buat al, semoga langkah al makin dimudahkan, semua impian dan target al di usia 22 ini bisa tercapai satu per satu, dan al selalu dikelilingi hal-hal baik, jangan pernah ragu sama kemampuan diri sendiri sayang, aca bakal selalu ada di sini buat dukung dan bangga sama setiap prosesnya al.</p>
           <br>
-          <p>Your laughter is the most beautiful music I have ever heard. Thank you for being you — with all your uniqueness, the gentleness of your heart, and a spirit that never fades.</p>
+          <p>Semoga di usia ini al makin bahagia, makin dewasa, dan tetap jadi versi diri al yang selalu aca sayang, enjoy ur special day my favorite person i love you so much ♡</p>
           <br>
-          <p style="text-align: right; margin-top: 15px; font-weight: bold; color: var(--accent);">With all my love,<br>your boyfriend 💜</p>
+          <p style="text-align: right; margin-top: 15px; font-weight: bold; color: var(--accent);">Dari aca cantik 💖</p>
         </div>
       </div>
 
       <!-- Photo Memories -->
       <div class="main-section">
         <p class="sub-title">A Collection of Memories</p>
-        <h2 style="font-size: 18px;">Our Photo Memories</h2>
+        <h2 style="font-size: 17px;">Foto Gantengnya Aca ✨</h2>
         
+        <!-- Foto Ganteng Al -->
         <div class="photo-card">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60" alt="Kimmy Photo">
-          <p class="photo-caption">i love u kimmy sayangg 💕</p>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60" id="photo1" alt="Foto Ganteng Al">
+          <p class="photo-caption">foto gantengnya aca ✨</p>
+        </div>
+
+        <!-- Foto Berdua -->
+        <div class="photo-card" style="margin-top: 20px;">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60" id="photo2" alt="Al & Aca">
+          <p class="photo-caption">Al & Aca Cantik 💕</p>
         </div>
       </div>
 
-      <!-- Timeline -->
+      <!-- Music Player dengan Audio Beneran -->
       <div class="main-section">
-        <p class="sub-title">Our Journey</p>
-        <h2 style="font-size: 18px; margin-bottom: 12px;">Memories We've Written Together</h2>
-        
-        <div class="timeline-item">
-          <p style="font-size: 10px; color: var(--accent);">THE VERY BEGINNING</p>
-          <p style="font-weight: bold; font-size: 13px;">First Time We Met</p>
-          <p style="font-size: 11px; color: var(--text-sub);">The day everything changed.</p>
-        </div>
-
-        <div class="timeline-item">
-          <p style="font-size: 10px; color: var(--accent);">A MAGICAL MOMENT</p>
-          <p style="font-weight: bold; font-size: 13px;">Our First Conversation</p>
-          <p style="font-size: 11px; color: var(--text-sub);">The first words that started it all.</p>
-        </div>
-
-        <div class="timeline-item">
-          <p style="font-size: 10px; color: var(--accent);">YOUR VERY SPECIAL DAY</p>
-          <p style="font-weight: bold; font-size: 13px;">Happy Birthday!</p>
-          <p style="font-size: 11px; color: var(--text-sub);">Celebrating you, today and always.</p>
-        </div>
-      </div>
-
-      <!-- Playlist -->
-      <div class="main-section">
-        <p class="sub-title">Our Songs</p>
-        <h2 style="font-size: 18px; margin-bottom: 12px;">Special Playlist</h2>
+        <p class="sub-title">Our Playlist</p>
+        <h2 style="font-size: 17px; margin-bottom: 12px;">Special Songs 🎵</h2>
         
         <div class="player-box">
-          <p style="font-size: 13px; font-weight: bold; color: var(--accent);" id="song-title">Shape of My Heart</p>
-          <p style="font-size: 11px; color: var(--text-sub);" id="song-artist">Backstreet Boys</p>
+          <p style="font-size: 13px; font-weight: bold; color: var(--accent);" id="song-title">Berapa Kali Kita Akan Saling Memaafkan</p>
+          <p style="font-size: 11px; color: var(--text-sub); margin-bottom: 10px;" id="song-artist">Pamungkas</p>
+
+          <audio id="audio-element" controls style="width: 100%; height: 35px; margin-bottom: 10px;"></audio>
           
-          <div class="playlist-item active" onclick="playSong('Shape of My Heart', 'Backstreet Boys', this)">
-            <span>🎵 Shape of My Heart</span>
-            <span>Backstreet Boys</span>
+          <div class="playlist-item active" onclick="playTrack(0, this)">
+            <span>🎵 Berapa Kali Kita Akan Saling Memaafkan</span>
+            <span>Pamungkas</span>
           </div>
-          <div class="playlist-item" onclick="playSong('Angel Baby', 'Troye Sivan', this)">
-            <span>🎵 Angel Baby</span>
-            <span>Troye Sivan</span>
-          </div>
-          <div class="playlist-item" onclick="playSong('My Love', 'Westlife', this)">
+          <div class="playlist-item" onclick="playTrack(1, this)">
             <span>🎵 My Love</span>
             <span>Westlife</span>
+          </div>
+          <div class="playlist-item" onclick="playTrack(2, this)">
+            <span>🎵 Shape of My Heart</span>
+            <span>Backstreet Boys</span>
           </div>
         </div>
       </div>
@@ -496,23 +448,23 @@
       <!-- Jar Notes -->
       <div class="main-section">
         <p class="sub-title">From My Heart To Yours</p>
-        <h2 style="font-size: 18px;">Reasons I'm Grateful for You</h2>
+        <h2 style="font-size: 17px;">Reasons I'm Grateful for Al</h2>
         <p style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">Shake the jar and pick a note 🫙</p>
         
         <div style="font-size: 45px; margin: 15px 0;" id="jar-icon">🫙</div>
         <button class="jar-btn" onclick="shakeJar()">Kocok Toples</button>
         
-        <p id="jar-note" style="margin-top: 15px; font-size: 13px; color: var(--accent); min-height: 35px;"></p>
+        <p id="jar-note" style="margin-top: 15px; font-size: 13px; color: var(--accent-spark); min-height: 35px;"></p>
       </div>
 
       <!-- Closing -->
       <div class="main-section" style="background: transparent; box-shadow: none;">
-        <p style="font-size: 11px; color: var(--accent);">🌸 With all my heart 🌸</p>
-        <h2 style="font-size: 18px; margin: 8px 0;">May your life always be filled with flowers</h2>
+        <p style="font-size: 11px; color: var(--accent);">🌻 With all my heart 🌻</p>
+        <h2 style="font-size: 18px; margin: 8px 0;">Happy 22nd Birthday, Al Sayang!</h2>
         <p style="font-size: 12px; color: var(--text-sub); line-height: 1.5;">
-          Happy birthday, Kimmy. Semoga tahun ini membawa hari-hari yang bahagia, orang-orang yang tulus, dan begitu banyak alasan untuk tersenyum. Aamiin.
+          Semoga umur 22 ini membawa banyak kebahagiaan, kemudahan, dan keberkahan dalam setiap langkahnya Al.
         </p>
-        <p style="font-size: 11px; color: var(--accent); margin-top: 15px;">— with all my love and prayers 💜 —</p>
+        <p style="font-size: 11px; color: var(--accent); margin-top: 15px;">— dari aca cantik 💖 —</p>
       </div>
 
     </div>
@@ -520,19 +472,19 @@
   </div>
 
   <script>
-    // Petals Effect
-    function createPetal() {
-      const container = document.getElementById('petal-container');
-      const petal = document.createElement('div');
-      petal.classList.add('cherry-blossom');
-      petal.innerHTML = ['🌸', '✨', '💜', '🌺'][Math.floor(Math.random() * 4)];
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = Math.random() * 3 + 2 + 's';
-      container.appendChild(petal);
+    // Falling Sunflowers and Sparks Effect
+    function createItem() {
+      const container = document.getElementById('item-container');
+      const item = document.createElement('div');
+      item.classList.add('floating-item');
+      item.innerHTML = ['🌻', '✨', '💛', '🌟'][Math.floor(Math.random() * 4)];
+      item.style.left = Math.random() * 100 + 'vw';
+      item.style.animationDuration = Math.random() * 3 + 2 + 's';
+      container.appendChild(item);
 
-      setTimeout(() => petal.remove(), 5000);
+      setTimeout(() => item.remove(), 5000);
     }
-    setInterval(createPetal, 300);
+    setInterval(createItem, 300);
 
     // Initial Loading Delay
     setTimeout(() => {
@@ -540,9 +492,9 @@
       document.getElementById('screen-passcode').classList.remove('hidden');
     }, 1800);
 
-    // Passcode Logic
+    // Passcode Logic (010524)
     let currentPin = "";
-    const correctPin = "111111";
+    const correctPin = "010524";
 
     function pressKey(key) {
       document.getElementById('error-msg').innerText = "";
@@ -579,16 +531,17 @@
         document.getElementById('screen-passcode').classList.add('hidden');
         document.getElementById('screen-gift').classList.remove('hidden');
       } else {
-        document.getElementById('error-msg').innerText = "Wrong code, try again 💜";
+        document.getElementById('error-msg').innerText = "Wrong code, try again ✨";
         currentPin = "";
         updateDots();
       }
     }
 
-    // Gift Unlock
+    // Gift Unlock & Auto Play Audio
     function openGift() {
       document.getElementById('screen-gift').classList.add('hidden');
       document.getElementById('screen-main').classList.remove('hidden');
+      playTrack(0, document.querySelectorAll('.playlist-item')[0]);
     }
 
     // Bouquet Message
@@ -596,21 +549,45 @@
       document.getElementById('flower-msg').innerText = msg;
     }
 
-    // Playlist Selector
-    function playSong(title, artist, el) {
-      document.getElementById('song-title').innerText = title;
-      document.getElementById('song-artist').innerText = artist;
+    // Songs Audio Setup
+    const songList = [
+      {
+        title: "Berapa Kali Kita Akan Saling Memaafkan",
+        artist: "Pamungkas",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      },
+      {
+        title: "My Love",
+        artist: "Westlife",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      },
+      {
+        title: "Shape of My Heart",
+        artist: "Backstreet Boys",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+      }
+    ];
+
+    const audioElement = document.getElementById('audio-element');
+
+    function playTrack(index, el) {
+      const song = songList[index];
+      document.getElementById('song-title').innerText = song.title;
+      document.getElementById('song-artist').innerText = song.artist;
       
+      audioElement.src = song.src;
+      audioElement.play();
+
       document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
-      el.classList.add('active');
+      if(el) el.classList.add('active');
     }
 
     // Jar Notes Shake
     const notes = [
-      "Tawamu selalu bisa membuat hari yang buruk terasa lebih ringan.",
-      "Kamu adalah alasan terbaik untuk selalu tersenyum setiap hari.",
-      "Kebaikan hatimu adalah hal yang paling berharga.",
-      "Terima kasih sudah selalu ada dan tumbuh seluar biasa ini!"
+      "Al selalu bisa bikin aca merasa aman dan happy.",
+      "Makasih ya udah tumbuh jadi laki-laki yang hebat dan sabar.",
+      "Aca bangga banget sama setiap proses yang Al jalani.",
+      "Semoga semua impian Al di usia 22 ini tercapai satu per satu!"
     ];
 
     function shakeJar() {
